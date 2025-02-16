@@ -1,6 +1,6 @@
 from src.DS01.constants import *
 from src.DS01.utils.common import read_yaml,create_directories
-from src.DS01.entity.config_entity import (DataIngestionConfig,DataValidationConfig)
+from src.DS01.entity.config_entity import (DataIngestionConfig,DataValidationConfig,DataTransformationConfig)
 
 class ConfigurationManager:
     def __init__(self,
@@ -14,7 +14,8 @@ class ConfigurationManager:
         self.schema=read_yaml(schema_filepath)
 
         create_directories([self.config.artifacts_root])
-
+    
+    ## Data Ingestion
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         config=self.config.data_ingestion
         create_directories([config.root_dir])
@@ -27,7 +28,8 @@ class ConfigurationManager:
         )
         return data_ingestion_config
 
-
+    
+    ## Data Validation
     def get_data_validation_config(self) -> DataValidationConfig:
         config=self.config.data_validation
         schema=self.schema.COLUMNS
@@ -42,4 +44,19 @@ class ConfigurationManager:
             all_schema=schema
         )
         return data_validation_config
+
+    
+
+    ## Data Transformation
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config=self.config.data_transformation
+        
+        create_directories([config.root_dir])
+
+        data_transformation_config=DataTransformationConfig(
+            root_dir=config.root_dir,
+            data_file=config.data_file
+        )
+        return data_transformation_config
+
 
