@@ -3,6 +3,7 @@ from src.DS01.pipeline.data_ingestion_pipeline import DataIngestionTrainingPipel
 from src.DS01.pipeline.data_validation_pipeline import DataValidationTrainingPipeline
 from src.DS01.pipeline.data_transformation_pipeline import DataTransformationTrainingPipeline
 from src.DS01.pipeline.model_trainer_pipeline import ModelTrainingPipeline
+from src.DS01.pipeline.model_evaluation_pipeline import ModelEvaluationTrainingPipeline
 
 
 
@@ -60,3 +61,14 @@ except Exception as e:
     raise e
 
 
+## Model Evaluation
+STAGE_NAME='Model Evaluation stage'
+
+try:
+    logger.info(f"Initiating {STAGE_NAME} Started")
+    model_evaluation=ModelEvaluationTrainingPipeline()
+    model_evaluation.intiate_model_evaluation()
+    logger.info(f"Completed {STAGE_NAME} Completed")
+except Exception as e:
+    logger.exception(e)
+    raise e

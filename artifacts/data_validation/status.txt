@@ -1,2 +1,10 @@
 Column validation status: True
 Data type validation status: True
+Column validation status: True
+Data type validation status: True
+Column validation status: True
+Data type validation status: True
+Column validation status: True
+Data type validation status: True
+Column validation status: True
+Data type validation status: True
